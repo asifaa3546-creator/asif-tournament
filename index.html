@@ -1,1 +1,578 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+<title>ASIF TOURNAMENT</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,sans-serif;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    background:#060914;
+    color:#fff;
+}
+
+/* HEADER */
+
+header{
+    position:sticky;
+    top:0;
+    z-index:1000;
+    background:rgba(6,9,20,.92);
+    backdrop-filter:blur(12px);
+    border-bottom:1px solid #202943;
+}
+
+.nav{
+    max-width:1100px;
+    margin:auto;
+    padding:15px 20px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.logo{
+    font-size:22px;
+    font-weight:900;
+    background:linear-gradient(90deg,#8b5cf6,#00d4ff);
+    -webkit-background-clip:text;
+    color:transparent;
+}
+
+nav a{
+    color:#ddd;
+    text-decoration:none;
+    margin-left:18px;
+    font-size:14px;
+}
+
+nav a:hover{
+    color:#00d4ff;
+}
+
+/* HERO */
+
+.hero{
+    min-height:500px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    padding:70px 20px;
+    background:
+    radial-gradient(circle at 50% 20%,#30206b 0,#060914 55%);
+}
+
+.hero-content{
+    max-width:750px;
+}
+
+.badge{
+    display:inline-block;
+    padding:8px 15px;
+    border:1px solid #5546a8;
+    border-radius:30px;
+    color:#b9aaff;
+    font-size:13px;
+    margin-bottom:20px;
+}
+
+.hero h1{
+    font-size:clamp(40px,8vw,75px);
+    font-weight:900;
+    line-height:1;
+}
+
+.hero h1 span{
+    background:linear-gradient(90deg,#8b5cf6,#00d4ff);
+    -webkit-background-clip:text;
+    color:transparent;
+}
+
+.hero p{
+    color:#aeb6ca;
+    margin:22px auto;
+    max-width:600px;
+    line-height:1.7;
+}
+
+.hero-btn{
+    display:inline-block;
+    padding:15px 28px;
+    border-radius:12px;
+    background:linear-gradient(90deg,#7c3aed,#00bfff);
+    color:#fff;
+    text-decoration:none;
+    font-weight:bold;
+    box-shadow:0 10px 30px rgba(0,180,255,.18);
+}
+
+/* STATS */
+
+.stats{
+    max-width:1000px;
+    margin:-45px auto 60px;
+    padding:0 20px;
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:15px;
+    position:relative;
+}
+
+.stat{
+    background:#0e1424;
+    border:1px solid #222d46;
+    border-radius:16px;
+    padding:22px;
+    text-align:center;
+}
+
+.stat h2{
+    color:#00d4ff;
+}
+
+.stat p{
+    color:#8993aa;
+    font-size:13px;
+    margin-top:6px;
+}
+
+/* SECTION */
+
+section{
+    max-width:1100px;
+    margin:auto;
+    padding:30px 20px 70px;
+}
+
+.section-title{
+    text-align:center;
+    margin-bottom:30px;
+}
+
+.section-title h2{
+    font-size:32px;
+}
+
+.section-title p{
+    color:#8791a8;
+    margin-top:8px;
+}
+
+/* TOURNAMENT */
+
+.tournaments{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:20px;
+}
+
+.tournament{
+    background:#0e1424;
+    border:1px solid #242e47;
+    border-radius:20px;
+    padding:22px;
+    transition:.3s;
+}
+
+.tournament:hover{
+    transform:translateY(-5px);
+    border-color:#6545e8;
+}
+
+.t-top{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:18px;
+}
+
+.game{
+    color:#00d4ff;
+    font-weight:bold;
+}
+
+.status{
+    background:#123d2a;
+    color:#42e89a;
+    padding:6px 10px;
+    border-radius:20px;
+    font-size:11px;
+}
+
+.tournament h3{
+    font-size:22px;
+    margin-bottom:15px;
+}
+
+.details{
+    color:#aab2c5;
+    line-height:2;
+    font-size:14px;
+}
+
+.join{
+    width:100%;
+    margin-top:18px;
+    padding:13px;
+    border:0;
+    border-radius:11px;
+    background:linear-gradient(90deg,#7c3aed,#00bfff);
+    color:white;
+    font-weight:bold;
+    font-size:15px;
+}
+
+/* JOIN */
+
+#join{
+    display:none;
+}
+
+.form-box{
+    max-width:550px;
+    margin:auto;
+    background:#0e1424;
+    border:1px solid #242e47;
+    border-radius:20px;
+    padding:25px;
+}
+
+.form-box input{
+    width:100%;
+    padding:14px;
+    margin:7px 0;
+    background:#080c17;
+    border:1px solid #303a52;
+    border-radius:10px;
+    color:#fff;
+    outline:none;
+}
+
+.submit{
+    width:100%;
+    padding:14px;
+    margin-top:10px;
+    border:0;
+    border-radius:10px;
+    background:#00c853;
+    color:#fff;
+    font-weight:bold;
+}
+
+/* RESULT */
+
+.result{
+    background:#0e1424;
+    border:1px solid #242e47;
+    border-radius:18px;
+    overflow:hidden;
+}
+
+.row{
+    display:grid;
+    grid-template-columns:70px 1fr 100px;
+    padding:16px;
+    border-bottom:1px solid #202940;
+}
+
+.row:first-child{
+    color:#00d4ff;
+    font-weight:bold;
+}
+
+/* FOOTER */
+
+footer{
+    text-align:center;
+    padding:30px 20px;
+    background:#04060d;
+    color:#687188;
+    font-size:13px;
+}
+
+/* MOBILE */
+
+@media(max-width:700px){
+
+    nav{
+        display:none;
+    }
+
+    .stats{
+        grid-template-columns:1fr;
+        margin-top:-25px;
+    }
+
+    .tournaments{
+        grid-template-columns:1fr;
+    }
+
+    .hero{
+        min-height:450px;
+    }
+
+    .hero h1{
+        font-size:48px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <div class="nav">
+
+        <div class="logo">🔥 ASIF TOURNAMENT</div>
+
+        <nav>
+            <a href="#home">Home</a>
+            <a href="#tournaments">Tournament</a>
+            <a href="#results">Results</a>
+        </nav>
+
+    </div>
+</header>
+
+
+<!-- HERO -->
+
+<div class="hero" id="home">
+
+    <div class="hero-content">
+
+        <div class="badge">
+            🏆 PROFESSIONAL GAMING PLATFORM
+        </div>
+
+        <h1>
+            ASIF <span>TOURNAMENT</span>
+        </h1>
+
+        <p>
+            Compete with the best players, join exciting tournaments
+            and prove your gaming skills.
+        </p>
+
+        <a class="hero-btn" href="#tournaments">
+            🚀 EXPLORE TOURNAMENTS
+        </a>
+
+    </div>
+
+</div>
+
+
+<!-- STATS -->
+
+<div class="stats">
+
+    <div class="stat">
+        <h2>0+</h2>
+        <p>Players</p>
+    </div>
+
+    <div class="stat">
+        <h2>0+</h2>
+        <p>Tournaments</p>
+    </div>
+
+    <div class="stat">
+        <h2>৳0</h2>
+        <p>Total Prize</p>
+    </div>
+
+</div>
+
+
+<!-- TOURNAMENT -->
+
+<section id="tournaments">
+
+    <div class="section-title">
+        <h2>🏆 Tournaments</h2>
+        <p>Join an upcoming tournament</p>
+    </div>
+
+    <div class="tournaments">
+
+        <div class="tournament">
+
+            <div class="t-top">
+                <span class="game">🎮 FREE FIRE</span>
+                <span class="status">OPEN</span>
+            </div>
+
+            <h3>Free Fire Survival Match</h3>
+
+            <div class="details">
+                👥 Mode: Solo<br>
+                💰 Entry: FREE<br>
+                🏆 Prize: Coming Soon<br>
+                📅 Date: Coming Soon<br>
+                ⏰ Time: Coming Soon
+            </div>
+
+            <button class="join" onclick="openJoin()">
+                JOIN TOURNAMENT
+            </button>
+
+        </div>
+
+
+        <div class="tournament">
+
+            <div class="t-top">
+                <span class="game">🎮 FREE FIRE</span>
+                <span class="status">SOON</span>
+            </div>
+
+            <h3>Squad Battle</h3>
+
+            <div class="details">
+                👥 Mode: Squad<br>
+                💰 Entry: Coming Soon<br>
+                🏆 Prize: Coming Soon<br>
+                📅 Date: Coming Soon<br>
+                ⏰ Time: Coming Soon
+            </div>
+
+            <button class="join" onclick="openJoin()">
+                JOIN SOON
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- JOIN -->
+
+<section id="join">
+
+    <div class="section-title">
+        <h2>📝 Join Tournament</h2>
+        <p>Player Login লাগবে না</p>
+    </div>
+
+    <div class="form-box">
+
+        <input id="name" placeholder="Player Name">
+
+        <input id="uid" placeholder="Free Fire UID">
+
+        <input id="phone" placeholder="Mobile Number">
+
+        <button class="submit" onclick="submitJoin()">
+            ✅ CONFIRM JOIN
+        </button>
+
+    </div>
+
+</section>
+
+
+<!-- RESULTS -->
+
+<section id="results">
+
+    <div class="section-title">
+        <h2>🏅 Latest Results</h2>
+        <p>Top players</p>
+    </div>
+
+    <div class="result">
+
+        <div class="row">
+            <div>Rank</div>
+            <div>Player</div>
+            <div>Points</div>
+        </div>
+
+        <div class="row">
+            <div>1</div>
+            <div>Coming Soon</div>
+            <div>0</div>
+        </div>
+
+        <div class="row">
+            <div>2</div>
+            <div>Coming Soon</div>
+            <div>0</div>
+        </div>
+
+        <div class="row">
+            <div>3</div>
+            <div>Coming Soon</div>
+            <div>0</div>
+        </div>
+
+    </div>
+
+</section>
+
+
+<footer>
+    © 2026 ASIF TOURNAMENT • All Rights Reserved
+</footer>
+
+
+<script>
+
+function openJoin(){
+
+    document.getElementById("join").style.display="block";
+
+    document.getElementById("join")
+    .scrollIntoView({
+        behavior:"smooth"
+    });
+
+}
+
+function submitJoin(){
+
+    let name =
+    document.getElementById("name").value.trim();
+
+    let uid =
+    document.getElementById("uid").value.trim();
+
+    let phone =
+    document.getElementById("phone").value.trim();
+
+    if(name==="" || uid==="" || phone===""){
+
+        alert("⚠️ সব তথ্য পূরণ করুন!");
+
+        return;
+    }
+
+    alert(
+        "🎉 Join Request Received!\n\n"+
+        "Player: "+name+
+        "\nUID: "+uid+
+        "\nMobile: "+phone
+    );
+
+}
+
+</script>
+
+</body>
+  </html>
